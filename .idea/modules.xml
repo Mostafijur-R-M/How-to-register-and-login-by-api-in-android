@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/android_login_registration_via_api-master.iml" filepath="$PROJECT_DIR$/android_login_registration_via_api-master.iml" group="android_login_registration_via_api-master" />
       <module fileurl="file://$PROJECT_DIR$/app/android_login_registration_via_api-master-app.iml" filepath="$PROJECT_DIR$/app/android_login_registration_via_api-master-app.iml" group="android_login_registration_via_api-master/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/liveflix.iml" filepath="$PROJECT_DIR$/liveflix.iml" group="liveflix" />
+      <module fileurl="file://$PROJECT_DIR$/app/liveflix-app.iml" filepath="$PROJECT_DIR$/app/liveflix-app.iml" group="liveflix/app" />
     </modules>
   </component>
 </project>
