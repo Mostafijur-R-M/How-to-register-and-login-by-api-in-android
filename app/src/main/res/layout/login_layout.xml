@@ -8,11 +8,12 @@
 
     <ImageView
         android:id="@+id/iv_user"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/student" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/ic_bg_logo_foreground" />
 
     <EditText
         android:id="@+id/et_email"
@@ -46,13 +47,14 @@
         android:id="@+id/btn_login"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_rectangle_pink"
+        android:background="@drawable/button_bg_shape"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:layout_below="@+id/et_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Login" />
+        android:text="Sign In"
+        android:textAllCaps="false"/>
 
     <TextView
         android:id="@+id/tv_register"
@@ -63,6 +65,6 @@
         android:layout_marginTop="20dp"
         android:textSize="15sp"
         android:textColor="#ffffff"
-        android:text="Register Me" />
+        android:text="Sign Up" />
 
 </RelativeLayout>

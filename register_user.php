@@ -2,9 +2,9 @@
 
 
 define('HOST', 'localhost');
-define('USER', 'onesgrgr_admob');
-define('PASSWORD', 'MOx5A7kOjb9Z');
-define('DB', 'onesgrgr_hotel');
+define('USER', 'mostafij_db_user');
+define('PASSWORD', 'AS)Mu$iHtEAC');
+define('DB', 'mostafij_liveflix');
 
 
 $con = mysqli_connect(HOST, USER, PASSWORD, DB) or die("Unable to Connect");
@@ -15,12 +15,12 @@ $userPassword = $_GET['user_password'];
 if($userName == '' || $userID == '' || $userPassword == ''){
 	echo 'User Name, ID or Password can not be empty';
 }else{
-	$query = "select * from users where email = '$userID'";
+	$query = "select * from demo_users where email = '$userID'";
 	$recordExists = mysqli_fetch_array(mysqli_query($con, $query));
 	if(isset($recordExists)){
 		echo 'User already exists';
 	}else{
-		$query = "INSERT INTO users (name, email, password) VALUES ('$userName', '$userID', '$userPassword')";
+		$query = "INSERT INTO demo_users (name, email, password) VALUES ('$userName', '$userID', '$userPassword')";
 		if(mysqli_query($con, $query)){
 			echo 'User registered successfully';
 		}else{

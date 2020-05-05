@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/iv_user"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/student_01"
+        app:srcCompat="@mipmap/ic_bg_logo_foreground"
         />
 
     <EditText
@@ -103,7 +103,7 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:background="@drawable/button_rectangle_pink"
+        android:background="@drawable/button_bg_shape"
         android:textColor="#ffffff"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
@@ -111,7 +111,8 @@
         android:layout_below="@+id/et_reg_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Register" />
+        android:text="Sign Up"
+        android:textAllCaps="false"/>
 
 
 </RelativeLayout>

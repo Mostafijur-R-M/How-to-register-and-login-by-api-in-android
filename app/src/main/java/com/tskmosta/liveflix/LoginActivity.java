@@ -2,7 +2,7 @@ package com.tskmosta.liveflix;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvRegister;
     Button btnLogin;
 
-    final String url_Login = "https://onesupport.website/login_user.php";
+    final String url_Login = "https://mostafij.thesoftking.com/liveflix/login_user.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
