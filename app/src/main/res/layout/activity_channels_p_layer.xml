@@ -5,12 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorMagenda"
-    tools:context=".view.ChannelsActivity">
+    tools:context=".view.ChannelsPLayerActivity"
+    android:keepScreenOn="true">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/channels_list_rv_id"
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -7,8 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    static Retrofit retrofit;
-    final static String BASE_URL = "http://mostafij.thesoftking.com/laravelapi/blog/public/";
+    private static Retrofit retrofit;
+    private final static String BASE_URL = "http://mostafij.thesoftking.com/laravelapi/blog/public/";
 
     public static Retrofit getApiClient(){
 

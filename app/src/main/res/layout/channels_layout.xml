@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10sp"
+    android:padding="20sp"
     android:background="@color/colorMagenda"
     android:gravity="center">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/channels_image_cv_id"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
         android:src="@drawable/student"
         app:civ_border_width="2dp"
-        android:layout_marginLeft="50sp"
         app:civ_border_color="#FF000000"/>
 
     <TextView
@@ -23,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BTV"
-        android:textColor="@color/colorGreen"
-        android:textSize="30sp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:textStyle="bold"
         android:gravity="center_horizontal" />
