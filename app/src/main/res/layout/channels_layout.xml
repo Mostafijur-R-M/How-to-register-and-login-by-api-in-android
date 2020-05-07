@@ -14,8 +14,7 @@
         android:layout_width="76dp"
         android:layout_height="76dp"
         android:src="@drawable/student"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        />
 
     <TextView
         android:id="@+id/channels_name_tv_id"

@@ -1,6 +1,7 @@
 package com.tskmosta.liveflix.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tskmosta.liveflix.R;
 import com.tskmosta.liveflix.model.Channels;
+import com.tskmosta.liveflix.view.ChannelsPLayerActivity;
 
 import java.util.List;
 
@@ -37,15 +39,20 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChannelsAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ChannelsAdapter.MyViewHolder holder, final int position) {
 
         holder.channelsNameTV.setText(channelsList.get(position).getName());
         Glide.with(context).load(channelsList.get(position).getImage()).into(holder.channelImageCV);
 
+        final String videoUrl = channelsList.get(position).getVideoUrl();
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, channelsList.get(position).getVideoUrl(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, ChannelsPLayerActivity.class);
+                intent.putExtra("videoUrl", videoUrl);
+                context.startActivity(intent);
             }
         });
     }
