@@ -1,8 +1,13 @@
 package com.tskmosta.liveflix;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
 
     final String url_Register = "https://mostafij.thesoftking.com/liveflix/register_user.php";
+
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String Email = etEmail.getText().toString();
                 String Password = etPassword.getText().toString();
 
+                showDialogMethod();
+
                 new RegisterUser().execute(Name, Email, Password);
             }
         });
@@ -45,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public class RegisterUser extends AsyncTask<String, Void, String>{
 
         @Override
@@ -71,9 +81,9 @@ public class RegisterActivity extends AppCompatActivity {
                         String result = response.body().string();
 
                         if (result.equalsIgnoreCase("User registered successfully")) {
+                            progressDialog.dismiss();
                             showToast("Register successful");
-                            Intent i = new Intent(RegisterActivity.this,
-                                    LoginActivity.class);
+                            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(i);
                             finish();
                         } else if (result.equalsIgnoreCase("User already exists")) {
@@ -98,9 +108,17 @@ public class RegisterActivity extends AppCompatActivity {
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                progressDialog.dismiss();
                 Toast.makeText(RegisterActivity.this,
                         Text, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void showDialogMethod() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading....");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 }

@@ -1,5 +1,6 @@
 package com.tskmosta.liveflix;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.tskmosta.liveflix.view.ChannelsActivity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Button signInBTN, signUpBTN;
-    private LinearLayout channelsLL;
+    private LinearLayout channelsLL, signInUpLL;
+    private String status = "";
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         signUpBTN = findViewById(R.id.sign_up_btn_id);
 
         channelsLL = findViewById(R.id.channels_list_ll_id);
+        signInUpLL = findViewById(R.id.sign_in_up_ll_id);
+
+        status = getIntent().getStringExtra("status");
+        if (status.equals("logged_out")){
+            signInUpLL.setVisibility(View.VISIBLE);
+        }else {
+            signInUpLL.setVisibility(View.GONE);
+        }
+
 
         signInBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +67,13 @@ public class MainActivity extends AppCompatActivity {
         channelsLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToChannelsActivity();
+
+                if (status.equals("logged_in")){
+                    goToChannelsActivity();
+                }else {
+                    showAlertDialog();
+                }
+
             }
         });
 
@@ -79,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    private void showAlertDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Alert!")
+                .setMessage("You have to login first.")
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+    }
+
     private void goToLoginActivity() {
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
@@ -102,5 +130,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void showDialogMethod() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading....");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 }

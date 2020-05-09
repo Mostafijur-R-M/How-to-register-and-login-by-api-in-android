@@ -1,5 +1,6 @@
 package com.tskmosta.liveflix;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
 
     final String url_Login = "https://mostafij.thesoftking.com/liveflix/login_user.php";
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this,
-                        RegisterActivity.class);
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 String Email = etEmail.getText().toString();
                 String Password = etPassword.getText().toString();
 
+                showDialogMethod();
                 new LoginUser().execute(Email, Password);
             }
         });
@@ -83,11 +85,13 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     String result = response.body().string();
                     if(result.equalsIgnoreCase("login")){
-                        Intent i = new Intent(LoginActivity.this,
-                                DashboardActivity.class);
+                        progressDialog.dismiss();
+                        Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                        i.putExtra("status", "logged_in");
                         startActivity(i);
                         finish();
                     }else{
+                        progressDialog.dismiss();
                        showToast("Email or Password mismatched!");
                     }
                 }
@@ -108,5 +112,11 @@ public class LoginActivity extends AppCompatActivity {
                         Text, Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private void showDialogMethod() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading....");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 }
